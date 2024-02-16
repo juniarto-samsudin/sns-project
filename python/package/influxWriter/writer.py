@@ -9,13 +9,10 @@ class Writer:
         self.write_client = influxdb_client.InfluxDBClient(url=url, token=token, org=org)
         self.write_api = self.write_client.write_api(write_options=SYNCHRONOUS)
         self.bucket = bucket
-    def write(self, measurement, tagName,tagValue,  field1, value1, field2, value2):
-        point = (
-            Point(measurement)
-            .tag(tagName, tagValue)
-            .field(field1, value1)
-            .field(field2, value2)
-        )
+    def write(self, measurement, tagName,tagValue,  field1, value1, field2="", value2=""):
+        point = Point(measurement).tag(tagName, tagValue).field(field1, value1)
+        if field2 and value2:
+            point = point.field(field2, value2)
         self.write_api.write(bucket=self.bucket, org=self.org, record=point)
     def writeWithTime(self, measurement, tagName,tagValue,  field, value, time):
         date_object = datetime.strptime(time, '%Y-%m-%d')
@@ -26,4 +23,8 @@ class Writer:
             .time(date_object)
         )
         self.write_api.write(bucket=self.bucket, org=self.org, record=point)
+    def dropMeasurement(self, measurement):
+        query_api = self.write_client.query_api()
+        delete_query = f'drop measurement "{measurement}"'
+        query_api.query(delete_query, org=self.org)
 

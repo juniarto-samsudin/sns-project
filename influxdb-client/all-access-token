@@ -15,6 +15,15 @@ influx config create --config-name onboarding \
     --org "d70ddaca741b4d81" \
     --token "us_6bNUyVAf1S5MUt5ME7U4C9kwNeO9fsYWbpnlcvHIFyMnbZFiGgl5zwG8bztqZ4Za4nqnSULFeiDZ8NvjYnw==" \
     --active
+Command does not work!
+Use IHPC for organization.
+
+influx config create --config-name onboarding \
+    --host-url "http://192.168.1.15:8086" \
+    --org IHPC \
+    --token "us_6bNUyVAf1S5MUt5ME7U4C9kwNeO9fsYWbpnlcvHIFyMnbZFiGgl5zwG8bztqZ4Za4nqnSULFeiDZ8NvjYnw==" \
+    --active
+    
     
 influx bucket create --name sample-bucket -c onboarding
 
@@ -110,3 +119,10 @@ from(bucket: "sample-bucket")
   )
   
   merge series/tables
+
+  to delete measurement
+  influx delete \
+  --bucket sample-bucket \
+  --predicate '_measurement="Bitcoin"' \
+  --start 1970-01-01T00:00:00Z \
+  --stop 2023-02-16T00:00:00Z

@@ -1,3 +1,3 @@
 export INFLUXDB_TOKEN=Y4MWB_-st52sqb9_LMveznEHyqWsuKwyRT3YTv7Ng07BYkPayLpt1o4DZDx4g4J6nDne2GtkENE63i_FYUEl0g==
-
+export INFLUXDB_TOKEN=6HJ3j2IbjZrokH99JRTaJmyePS4uQIT9WCeUjHBPKm6iK-9_7liXzB1F0Pjk2AGdBouTDfQUHJq1k0bgMhAdzA==
 pip3 install influxdb-client

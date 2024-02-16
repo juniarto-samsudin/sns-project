@@ -13,3 +13,7 @@ class Generator:
     def getSentiment(self, msg):
         sentiments = ['POS', 'NEG', 'NEU']
         return random.choice(sentiments)
+    def getPrice(self):
+        datePriceDf = self.df.iloc[:, [0, 4]]
+        result_dict = datePriceDf.to_dict(orient='records')
+        return result_dict
