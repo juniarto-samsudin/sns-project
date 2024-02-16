@@ -23,8 +23,4 @@ class Writer:
             .time(date_object)
         )
         self.write_api.write(bucket=self.bucket, org=self.org, record=point)
-    def dropMeasurement(self, measurement):
-        query_api = self.write_client.query_api()
-        delete_query = f'drop measurement "{measurement}"'
-        query_api.query(delete_query, org=self.org)
 

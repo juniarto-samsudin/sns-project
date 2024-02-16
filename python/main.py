@@ -28,20 +28,15 @@ def populatePrice():
         print(price['Close'])
         time.sleep(10)
 
-def dropMeasurement():
-    myWriter.dropMeasurement("Bitcoin")
+whatToRun = os.getenv("whatToRun")
 
-#populateComments()
-#populatePrice()
-dropMeasurement()
+def main():
+    if whatToRun == "price":
+        populatePrice()
+    elif whatToRun == "comments":
+        populateComments()
+    else:
+        populatePrice()
 
-""" myMessageArray = myGenerator.getNews()
-print(myMessageArray[0])
-
-for message in myMessageArray:
-    mySentiment = myGenerator.getSentiment(message['Comments'])
-    myWriter.write("Bitcoin", "Source", "Twitter", "Comments", message['Comments'], "Sentiment", mySentiment)
-    time.sleep(10)
-
-mySentiment = myGenerator.getSentiment(myMessageArray[0]['Comments'])
-print(mySentiment) """
+if __name__ == "__main__":
+    main()

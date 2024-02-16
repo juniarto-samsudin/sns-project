@@ -1,0 +1,8 @@
+version: '3'
+services:
+  pythonscript:
+    image: sns/python:1.00
+    environment: #another option is whatToRun=comments
+      - whatToRun=price
+    container_name: pythonscript
+    restart: "no"
