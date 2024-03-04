@@ -1,8 +1,8 @@
 version: '3'
 services:
   pythonscript:
-    image: sns/python:2.00
+    image: sns/pythongpt:1.00
     environment: #another option is whatToRun=comments or price
       - whatToRun=comments
-    container_name: pythonscript
+    container_name: pythonscriptgpt
     restart: "no"
