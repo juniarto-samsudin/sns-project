@@ -20,14 +20,16 @@ class Writer:
             point = point.field(field2, value2)
         point = point.time(datetime.utcnow() + timedelta(seconds=10))
         self.write_api.write(bucket=self.bucket, org=self.org, record=point)
-    def writeWithTime(self, measurement, tagName,tagValue,  field, value, time):
+    def writeWithTime(self, measurement, tagName,tagValue, time, field1, value1, field2="", value2=""):
         date_object = datetime.strptime(time, '%Y-%m-%d')
         point = (
             Point(measurement)
             .tag(tagName, tagValue)
-            .field(field, value)
+            .field(field1, value1)
             .time(date_object)
         )
+        if field2 and value2:
+            point = point.field(field2, value2)
         self.write_api.write(bucket=self.bucket, org=self.org, record=point)
     def writeWithTimePlus1Day(self, measurement, tagName,tagValue,  field, value, time, timeNext):
         #date_object = datetime.strptime(time, '%Y-%m-%d')

@@ -24,8 +24,9 @@ def main():
             myMessageNext = myMessageArray[i]
         mySentimentAndPrice = myInference.getSentimentAndPrice(myMessage)
         print(mySentimentAndPrice)
-        myWriter.writeWithTime("Bitcoin", "Source", "Current Close", "Price", myMessage['Close'], myMessage['Date'])
+        myWriter.writeWithTime("Bitcoin", "Source", "Current Close", myMessage['Date'], "Price", myMessage['Close'])
         myWriter.writeWithTimePlus1Day("Bitcoin-Prediction", "Source", "Predicted Close", "Predicted-Price", mySentimentAndPrice['predicted_price'], myMessage['Date'], myMessageNext['Date'])
+        myWriter.writeWithTime("Bitcoin-Sentiment", "Source", "Sentiment", myMessage['Date'], "Sentiment", mySentimentAndPrice['sentiment'],"Comments",mySentimentAndPrice['comments'])
 
 if __name__ == "__main__":
     main()

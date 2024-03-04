@@ -56,12 +56,15 @@ class Inference:
             sentiment = -1  # Negative
         else:
             sentiment = 0  # Neutral/Irrelevant
+        
+        sentiment_msg_mapping = {1: 'POS', 0: 'NEU', -1: 'NEG'}
+        sentiment_msg = sentiment_msg_mapping[sentiment]
         # 准备输入神经网络模型的特征
         nn_input = torch.FloatTensor([[msg['Close'], sentiment]])
         # 使用神经网络模型预测明天的价格
         with torch.no_grad():
             predicted_price = self.nn_model(nn_input).item()
-        result_dict = {'date': msg['Date'],'comments': msg['Comments'], 'price': msg['Close'],'sentiment': sentiment, 'predicted_price': predicted_price}
+        result_dict = {'date': msg['Date'],'comments': msg['Comments'], 'price': msg['Close'],'sentiment': sentiment_msg, 'predicted_price': predicted_price}
         return result_dict
     
 

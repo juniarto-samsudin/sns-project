@@ -133,3 +133,30 @@ from(bucket: "sample-bucket")
   --predicate '_measurement="Bitcoin"' \
   --start 1970-01-01T00:00:00Z \
   --stop 2024-02-16T00:00:00Z
+
+  ./influx delete   --bucket sample-bucket   --predicate '_measurement="Bitcoin-Prediction"'   --start 1970-01-01T00:00:00Z   --stop 2024-03-01T00:00:00Z -c onb
+oarding
+./influx delete   --bucket sample-bucket   --predicate '_measurement="Bitcoin"'   --start 1970-01-01T00:00:00Z   --stop 2024-03-01T00:00:00Z -c onboarding
+
+
+from(bucket: "sample-bucket")
+  |> range(start: -5y)
+  |> filter(fn: (r) =>
+    r._measurement == "Bitcoin-Sentiment" and
+    r._field == "Sentiment" or
+    r._field == "Comments"
+  )
+
+from(bucket: "sample-bucket")
+  |> range(start: -4y)
+  |> filter(fn: (r) =>
+    r._measurement == "Bitcoin" and
+    r._field == "Price"
+  )
+
+from(bucket: "sample-bucket")
+  |> range(start: -4y)
+  |> filter(fn: (r) =>
+    r._measurement == "Bitcoin-Prediction" and
+    r._field == "Predicted-Price"
+  )
