@@ -1,4 +1,5 @@
 6iPItplEV3HsA2mmt3FuUH_GgizRWU4Qxesz5Rn7BZGkedslASVY_Up6hqlv11SQJ7B1NOyEWF42G83Jl8GmAA==
+V6Mcr-5AOJFtWPNnT-9us4gu799kcyX-W2xnWdOQTd-LC36M5gOJMoiD5skM6pzD2HO3XavEKWdkJM9PMOeyYw==
 E1UKJ_Hq2Qcpqa6CfrBpulEMo0fi_P9Yz1iaeyvb_Sa-FibUi72-4eicnHWPHCVJLEV0geg9SnOST1q0MJurtQ==
 org-id: d70ddaca741b4d81
 
@@ -28,7 +29,7 @@ influx config create --config-name onboarding \
 influx config create --config-name onboarding \
     --host-url "http://10.9.240.14:8086" \
     --org IHPC \
-    --token "E1UKJ_Hq2Qcpqa6CfrBpulEMo0fi_P9Yz1iaeyvb_Sa-FibUi72-4eicnHWPHCVJLEV0geg9SnOST1q0MJurtQ==" \
+    --token "V6Mcr-5AOJFtWPNnT-9us4gu799kcyX-W2xnWdOQTd-LC36M5gOJMoiD5skM6pzD2HO3XavEKWdkJM9PMOeyYw==" \
     --active
     
     
@@ -160,3 +161,18 @@ from(bucket: "sample-bucket")
     r._measurement == "Bitcoin-Prediction" and
     r._field == "Predicted-Price"
   )
+
+  <iframe id="embeddedFrame" src="http://celcoatings.com" width="100%"> </iframe>
+<script>
+var iframe = document.getElementById("embeddedFrame");
+
+    function setIframeHeight() {
+        iframe.style.height = iframe.parentElement.offsetHeight-5 + "px";
+    }
+
+    // Call setIframeHeight when the iframe content is loaded
+    iframe.onload = setIframeHeight;
+
+    // Also, call setIframeHeight when the window is resized
+    window.addEventListener("resize", setIframeHeight);
+</script>
