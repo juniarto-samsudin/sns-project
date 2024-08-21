@@ -3,6 +3,6 @@ services:
   pythonscript:
     image: sns/pythongpt:2.00
     environment: #another option is whatToRun=comments or price
-      - token=V6Mcr-5AOJFtWPNnT-9us4gu799kcyX-W2xnWdOQTd-LC36M5gOJMoiD5skM6pzD2HO3XavEKWdkJM9PMOeyYw==
+      - token=Z8PIzBNZcT7cpgvJusDBVTaWXd1tzo9RJin2O2OQpaOOBzOEO9TAClGjPXR_IpmMHtqr4fAeUeOQklKyLdtsNw==
     container_name: pythonscriptgpt2
     restart: "no"
